@@ -1,0 +1,19 @@
+const mongoose = require('mongoose');
+const strings = require('../utils/strings');
+
+const { Schema } = mongoose;
+
+const masterGoodsCartSchema = new Schema({
+  transactionalNumber: { type: String, required: true },
+  createdDate: { type: Date, default: Date.now },
+  goodsTypeID: { type: String },
+  goodsTypeName: { type: String },
+  tonase: { type: Number },
+  sacks: { type: Number },
+  codeID: { type: String },
+  codeName: { type: String },
+  createdUser: { type: Schema.Types.ObjectId, ref: strings.Users },
+});
+
+// Export the model
+module.exports = mongoose.model(strings.MasterGoodsCart, masterGoodsCartSchema);

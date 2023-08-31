@@ -1,0 +1,129 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "VFCS API DOCUMETATION",
+    "version": "1.0.0",
+    "title": "VFCS API Application",
+    "termsOfService": "",
+    "contact": {
+      "email": ""
+    }
+  },
+  "host": "localhost:1234",
+  "basePath": "/",
+  "tags": [
+      {
+      "name": "auth",
+      "description": "Authorization system",
+      "externalDocs": {
+        "description": "Find out more",
+        "url": "http://swagger.io"
+      }
+    }
+
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "paths": {
+
+      "/auth/signup": {
+      "post": {
+        "tags": [
+          "auth"
+        ],
+        "summary": "API for login to system",
+        "description": "",
+        "operationId": "userLogin",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+         "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Put the email and password",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Login"
+            }
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Invalid input email or password"
+          }
+        }
+      }
+    }
+},
+
+  "securityDefinitions": {
+    "api_key": {
+      "type": "apiKey",
+      "name": "authorization",
+      "in": "header"
+    }
+  },
+
+  "definitions": {
+
+      "Login": {
+      "properties": {
+        "user_email": {
+          "type": "string"
+        },
+        "user_password": {
+          "type": "string"
+        }
+      }
+    },
+
+    "User": {
+      "properties": {
+        "user_name": {
+          "type": "string"
+        },
+        "user_email": {
+          "type": "string"
+        },
+        "user_password": {
+          "type": "string"
+        },
+        "department_id": {
+          "type": "integer"
+        },
+         "created_date": {
+          "type": "string"
+        },
+         "modified_date": {
+          "type": "string"
+        },
+        "created_by": {
+          "type": "string"
+        },
+         "modified_by": {
+          "type": "string"
+        },
+        "user_phone": {
+          "type": "string"
+        },
+        "job_id": {
+          "type": "integer"
+        },
+        "job_level_id": {
+          "type": "integer"
+        }
+      }
+    }
+  },
+
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  }
+}
